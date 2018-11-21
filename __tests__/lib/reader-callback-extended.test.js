@@ -17,7 +17,7 @@ describe('File Reader Module', () => {
     });
   });
   it('reads 1 file', done => {
-    let file = ['.files/test.txt'];
+    let file = ['../../files/test.txt'];
     reader(file, (err,data) => {
       expect(err).toBeUndefined();
       expect(data instanceof Array).toBeTruthy();
@@ -26,20 +26,29 @@ describe('File Reader Module', () => {
     });
   });
   it('reads 2 files', done => {
-    let files = ['./files/1.txt', './files/2.txt'];
+    let files = ['../../files/1.txt', '../../files/2.txt'];
     reader(files, (err,data) => {
       expect(err).toBeUndefined();
-      expect(data instanceof Array ).toBeTruthy();
-      expect(data.length ).toBe(2);
+      expect(data instanceof Array).toBeTruthy();
+      expect(data.length).toBe(2);
       done();
     });
   });
   it('reads 3 files', done => {
-    let files = ['./files/1.txt', './files/2.txt', './files/3.txt'];
+    let files = ['../../files/1.txt', '../../files/2.txt', '../../files/3.txt'];
     reader(files, (err,data) => {
       expect(err).toBeUndefined();
       expect(data instanceof Array ).toBeTruthy();
       expect(data.length ).toBe(3);
+      done();
+    });
+  });
+  it('reads 6 files', done => {
+    let files = ['../../files/1.txt', '../../files/2.txt', '../../files/3.txt', '../../files/test.txt', '../../files/2.txt', '../../files/3.txt'];
+    reader(files, (err,data) => {
+      expect(err).toBeUndefined();
+      expect(data instanceof Array ).toBeTruthy();
+      expect(data.length ).toBe(6);
       done();
     });
   });
